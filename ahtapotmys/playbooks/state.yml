@@ -21,6 +21,7 @@
   - /etc/ansible/roles/base/vars/logrotate.yml
   - /etc/ansible/roles/base/vars/directory.yml
   - /etc/ansible/roles/base/vars/fusioninventory.yml
+  - /etc/ansible/roles/base/vars/security.yml
   roles:
   - { role: base }
 
@@ -174,11 +175,11 @@
 - hosts: ossimcik
   remote_user: ahtapotops
   vars_files:
-  - /etc/ansible/roles/ossimcik/vars/repo.yml
   - /etc/ansible/roles/ossimcik/vars/package.yml
   - /etc/ansible/roles/ossimcik/vars/ossec.yml
   - /etc/ansible/roles/ossimcik/vars/nxlog.yml
   - /etc/ansible/roles/ossimcik/vars/rsyslog.yml
+  - /etc/ansible/roles/ossimcik/vars/logrotate.yml
   roles:
   - { role: ossimcik }
 
@@ -203,11 +204,10 @@
   roles:
   - { role: ocswb }
 
-#- hosts: all:!ossimcik 
-#  remote_user: ahtapotops
-#  vars_files:
-#  - /etc/ansible/roles/ossec/vars/repo.yml
-#  - /etc/ansible/roles/ossec/vars/package.yml
-#  - /etc/ansible/roles/ossec/vars/ossec.yml
-#  roles:
-#  - { role: ossec }
+- hosts: all 
+  remote_user: ahtapotops
+  vars_files:
+  - /etc/ansible/roles/ossec/vars/package.yml
+  - /etc/ansible/roles/ossec/vars/ossec.yml
+  roles:
+  - { role: ossec }
